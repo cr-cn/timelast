@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>timelast</title>
+</head>
+<body>
+	<div id="timelast"></div>
+	<script>
+		function checkTime(i){
+			if(i < 10){
+				i = '0'+i;
+			}
+			return i;
+		}
+		function showTime(){
+			var myDate = new Date();
+			var year = myDate.getFullYear();
+			var month = myDate.getMonth()+1;
+			var date = myDate.getDate();
+			var d = myDate.getDay();
+			var h = myDate.getHours();
+			var m = myDate.getMinutes();
+			var s = myDate.getSeconds();
+			m = checkTime(m);
+			s = checkTime(s);
+			weekday = ['星期日','星期一','星期二','星期三','星期四','星期五','星期六'];
+			document.getElementById('timelast').innerHTML = year+'年'+month+'月'+date+'日'+weekday[d]+h+':'+m+':'+s;
+			setTimeout(showTime, 50);
+		}
+		showTime();
+	</script>
+</body>
+</html>

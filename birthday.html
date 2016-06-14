@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="birthday"></div>
+	<script>
+		window.onload = function(){
+			birthday();
+		}
+		function checktime(i){
+			if (i < 10){
+				i = '0' + i;
+			}
+			return i;
+		}
+		function checktimee(i){
+			if (i < 100){
+				i = '0' + i;
+			}
+			return i;
+		}
+		function birthday(){
+			var endtime = new Date("2016.12.08,20:38:00");
+			var nowtime = new Date();
+			var timelast = parseInt((endtime.getTime()-nowtime.getTime())/1000);
+
+			var d = parseInt(timelast/(3600*24));
+			var h = parseInt(timelast/3600%24);
+			var m = parseInt(timelast/60%60);
+			var s = timelast%60;
+			var ms = parseInt((endtime.getTime()-nowtime.getTime())/100%10);
+
+			d = checktime(d);
+			h = checktime(h);
+			m = checktime(m);
+			s = checktime(s);
+
+			setTimeout(birthday, 50);
+
+			if (timelast > 0){
+				document.getElementById("birthday").innerHTML = d +"天"+ h + "小时"+ m + "分"+ s + "秒" + ms;
+			}else{
+				document.getElementById("birthday").innerHTML = "宝贝生日快乐";
+			}
+		}
+	</script>
+</body>
+</html>
